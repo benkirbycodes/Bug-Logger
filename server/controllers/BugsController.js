@@ -6,14 +6,14 @@ export default class BugsController {
   constructor() {
     this.router = express
       .Router()
-      .get("/bugs", this.getAll)
-      .get("/bugs/:id", this.getById)
-      .get("/bugs/:id/notes", this.getNotesByBugId)
-      .post("/bugs", this.createBug)
-      .put("/bugs/:id", this.editBug)
-      .put("/bugs/:id/notes/:id", this.editNoteByBugId)
-      .delete("/bugs/:id", this.closeBug)
-      .delete("/bugs/:id/notes/:id", this.deleteNote);
+      .get("", this.getAll)
+      .get("/:id", this.getById)
+      .get("/:id/notes", this.getNotesByBugId)
+      .post("", this.createBug)
+      .put("/:id", this.editBug)
+      .put("/:id/notes/:id", this.editNoteByBugId)
+      .delete("/:id", this.closeBug)
+      .delete("/:id/notes/:id", this.deleteNote);
   }
 
   async getAll(req, res, next) {

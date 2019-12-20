@@ -3,7 +3,7 @@ import notesService from "../services/NotesService";
 
 export default class NotesController {
   constructor() {
-    this.router = express.Router().post("/notes", this.createNote);
+    this.router = express.Router().post("", this.createNote);
   }
 
   //NOTE Below, does it need bug id?
