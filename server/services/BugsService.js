@@ -19,14 +19,20 @@ class BugsService {
     return await _repository.create(body);
   }
 
-  async editBug(id, body) {
-    let data = await _repository.findByIdAndUpdate(id, body, { new: true });
+  async editBug(id, update) {
+    let data = await _repository.findOneAndUpdate(
+      { id: id, closed: false },
+      update,
+      { new: true }
+    );
+    return data;
+    //TODO Figure out how to send error for unsuccessful edit
     if (!data) {
       throw new ApiError("Invalid ID", 400);
     }
   }
   async closeBug(id) {
-    let data = await _repository.findByIdAndDelete(id);
+    let data = await _repository.findByIdAndUpdate(id, { closed: true });
     if (!data) {
       throw new ApiError("Invalid ID", 400);
     }

@@ -12,8 +12,7 @@ export default class BugsController {
       .post("", this.createBug)
       .put("/:id", this.editBug)
       .put("/:id/notes/:id", this.editNoteByBugId)
-      .delete("/:id", this.closeBug)
-      .delete("/:id/notes/:id", this.deleteNote);
+      .delete("/:id", this.closeBug);
   }
 
   async getAll(req, res, next) {
@@ -51,6 +50,7 @@ export default class BugsController {
   async editBug(req, res, next) {
     try {
       let data = await bugsService.editBug(req.params.id, req.body);
+      return res.send(data);
     } catch (error) {
       next(error);
     }
@@ -58,6 +58,7 @@ export default class BugsController {
   async editNoteByBugId(req, res, next) {
     try {
       let data = await notesService.editNoteByBugId(req.params.id, req.body);
+      return res.send(data);
     } catch (error) {
       next(error);
     }
@@ -65,14 +66,7 @@ export default class BugsController {
   async closeBug(req, res, next) {
     try {
       let data = await bugsService.closeBug(req.params.id);
-    } catch (error) {
-      next(error);
-    }
-  }
-  //NOTE Below, not sure what ids will be needed, double check
-  async deleteNote(req, res, next) {
-    try {
-      let data = await notesService.deleteNote(req.params.id);
+      return res.send("Successfully Closed");
     } catch (error) {
       next(error);
     }
