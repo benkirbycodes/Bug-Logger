@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import Bug from "../models/Bug";
+import ApiError from "../Utils/ApiError";
 
 const _repository = mongoose.model("Bug", Bug);
 
@@ -7,17 +8,28 @@ class BugsService {
   async getAll() {
     return await _repository.find({});
   }
-  getById(id) {
-    throw new Error("Method not implemented.");
+  async getById(id) {
+    let data = await _repository.findById(id);
+    if (!data) {
+      throw new ApiError("Invalid ID", 400);
+    }
+    return data;
   }
-  createBug(body) {
-    throw new Error("Method not implemented.");
+  async createBug(body) {
+    return await _repository.create(body);
   }
-  editBug(id, body) {
-    throw new Error("Method not implemented.");
+
+  async editBug(id, body) {
+    let data = await _repository.findByIdAndUpdate(id, body, { new: true });
+    if (!data) {
+      throw new ApiError("Invalid ID", 400);
+    }
   }
-  closeBug(id) {
-    throw new Error("Method not implemented.");
+  async closeBug(id) {
+    let data = await _repository.findByIdAndDelete(id);
+    if (!data) {
+      throw new ApiError("Invalid ID", 400);
+    }
   }
 }
 
