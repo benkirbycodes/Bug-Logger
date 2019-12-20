@@ -4,16 +4,18 @@ Welcome to the Bug-Report!
 
 You have been tasked with creating a tool to better report bugs for your team. The goal being, to better track bugs in your application, as well as the process taken to solve them.
 
-All bugs will have a title, description, who reported the bug, closedDate and whether or not it has been closed. 
+All bugs will have a title, description, who reported the bug, closedDate and whether or not it has been closed.
 
 Users can also add notes to the bug report providing detailed steps towards the bugs resolution.
 
 Once a bug has been closed, no further editing is allowed.
 
 Here are some mock-ups from the client.
+
 <hr>
 
 ### Home View:
+
 <div>
   <img class="img-responsive" style="border: 1px solid black;padding: 10px" src="HomeView.jpg" />
 </div>
@@ -23,14 +25,16 @@ Here are some mock-ups from the client.
 
 From the Home page users can view all the bugs that have been added, color coded to which are open and closed(by status). You should be able to filter the bugs based on their status(open or closed).
 
-#### Challenges 
+#### Challenges
+
 Try to implement pagination here(display limited number of bugs per page). Modals for creating bugs instead of a static form could be a nice feature as well.
 <br>
 <br>
+
 <hr>
 
-
 ### Details View:
+
 <div>
   <img class="img-responsive"  style="border: 1px solid black;padding: 10px"  src="BugDetailsView.jpg" />
 </div>
@@ -41,8 +45,8 @@ Try to implement pagination here(display limited number of bugs per page). Modal
 The details view provides some additional information about the bug, as well as showing all the notes made by other users. Here notes can be created or removed.
 
 #### Challenges:
- See if you can implement the ability to go next or previous from this page. Modals for creating notes would be a nice feature instead of a static form always visible on the page.
 
+See if you can implement the ability to go next or previous from this page. Modals for creating notes would be a nice feature instead of a static form always visible on the page.
 
 <hr>
 <br>
@@ -50,8 +54,8 @@ The details view provides some additional information about the bug, as well as 
 
 ## Bug-Report API
 
-
 ### Bug Schema
+
 ```Javascript
 var bug = new Schema({
     closed: { type: Boolean, required: true, default: false },
@@ -63,6 +67,7 @@ var bug = new Schema({
 ```
 
 ### Note Schema
+
 ```Javascript
 var note = new Schema({
     content: { type: String, required: true },
@@ -72,50 +77,51 @@ var note = new Schema({
 }, { timestamps: true, toJSON: { virtuals: true } })
 ```
 
-
 ### Endpoints
+
 > baseUrl: `'https://localhost:3000/api'`
 
-Get
+> NOTE x denotes done below
 
-`/bugs`: returns a list of all the bugs
+> Get
 
-`/bugs/:id`: returns a single bug with all it's data
+`/bugs`: returns a list of all the bugs x
 
-`/bugs/:id/notes`: returns all notes for a given bug id
+`/bugs/:id`: returns a single bug with all it's data x
+
+`/bugs/:id/notes`: returns all notes for a given bug id x
 
 Post
 
-`/bugs`: Creates a new bug
+`/bugs`: Creates a new bug x
 
-`/notes`: Adds a new note to the bug.
+`/notes`: Adds a new note to the bug. x
 
-Put 
+Put
 
->*both of these can only be done if bug is open*
+> _both of these can only be done if bug is open_
 
-`/bugs/:id`: Edits bug
+`/bugs/:id`: Edits bug x
 
-`/bugs/:id/notes/:id`: Edits note. (not required)
+`/bugs/:id/notes/:id`: Edits note. (not required) x
 
 Delete
 
 > There is no true bug delete, only changing the status of a bug to closed.
 
-`/bugs/:id`: Changes status of bug from open to close
+`/bugs/:id`: Changes status of bug from open to close x
 
-`/bugs/:id/notes/:id`: Deletes note.
-
+`/bugs/:id/notes/:id`: Deletes note. x
 
 <hr>
-
 
 ## Requirements
 
 ### Visualization
+
 - At least 2 supported front end routes
-    - Home shows all bugs
-    - BugDetails displays the details of a bug and its Notes
+  - Home shows all bugs
+  - BugDetails displays the details of a bug and its Notes
 - Bugs can be filtered by their status
 - Creating a new bug automatically navigates to the BugDetails view
 - Navbar to allow navigating back to Home view
@@ -123,6 +129,7 @@ Delete
 - Bugs display last modified date
 
 ### Functionality
+
 - Bugs can be created from the Home view
 - Bugs can be closed from the BugDetails view
 - User is prompted "are you sure?" when closing a Bug
@@ -132,10 +139,12 @@ Delete
 - Cannot edit a Bug after it is closed
 
 #### Challenges
+
 - Implement user auth
 - Modals for creating Bugs
 - Modals for creating Notes
 - Use sweet alert for prompts
 
 # TESTING:
- go to http://localhost:3000/#/test-runner to use a testing suite for your server.
+
+go to http://localhost:3000/#/test-runner to use a testing suite for your server.

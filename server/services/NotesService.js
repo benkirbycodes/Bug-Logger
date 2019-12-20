@@ -4,8 +4,8 @@ import Note from "../models/Note";
 const _repository = mongoose.model("Note", Note);
 
 class NotesService {
-  async getAll() {
-    return await _repository.find({});
+  createNote(body) {
+    throw new Error("Method not implemented.");
   }
 }
 
