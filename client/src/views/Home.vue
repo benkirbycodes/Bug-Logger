@@ -2,9 +2,10 @@
   <div class="home container-fluid">
     <top />
     <div class="row">
-      <div class="col">
+      <div class="col-12">
         <add-bug />
       </div>
+      <div class="col-12">{{ bugs }}</div>
     </div>
   </div>
 </template>
@@ -16,9 +17,18 @@ import addBug from "@/components/AddBug";
 
 export default {
   name: "home",
+  mounted() {
+    this.$store.dispatch("getAllBugs");
+  },
   components: {
     top,
     addBug
+  },
+  computed: {
+    bugs() {
+      console.log(this.$store.state.bugs);
+      return this.$store.state.bugs;
+    }
   }
 };
 </script>

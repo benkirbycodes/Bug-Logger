@@ -10,7 +10,7 @@
           type="text"
           v-model="newBug.title"
         />
-        <label for="reported-by">Description</label>
+        <label for="reported-by">Reported By</label>
         <input
           placeholder="Who are you?"
           class="form-control"
@@ -18,7 +18,7 @@
           type="text"
           v-model="newBug.reportedBy"
         />
-        <label for="description">Reported By</label>
+        <label for="description">Description</label>
         <input
           placeholder="What's the issue?"
           name="description"

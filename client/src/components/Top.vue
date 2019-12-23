@@ -13,12 +13,11 @@
 //TODO Using a static addBug form for now, come back to this when hooking up modals.
 export default {
   name: "top",
-  data() {},
+
   methods: {
     openAddBugForm() {}
   }
 };
 </script>
 
-<style>
-</style>
+<style></style>
