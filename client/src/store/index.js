@@ -18,8 +18,8 @@ export default new Vuex.Store({
     setBugs(state, data) {
       state.bugs = data;
     },
-    addBug(state, data) {
-      state.bugs.push(data);
+    addBug(state, bug) {
+      state.bugs.push(bug);
     }
   },
   actions: {
@@ -28,11 +28,10 @@ export default new Vuex.Store({
       console.log(res.data);
       commit("setBugs", res.data);
     },
-    async addbug({ commit, dispatch }, bug) {
+    async addBug({ commit, dispatch }, bug) {
       let res = await _api.post("bugs", bug);
       console.log(res.data);
       commit("addBug", res.data);
     }
-  },
-  modules: {}
+  }
 });

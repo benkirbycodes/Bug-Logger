@@ -1,5 +1,5 @@
 <template>
-  <div class="add-bug">
+  <div class="add-bug col-12">
     <form @submit.prevent="addBug">
       <div class="form-group">
         <label for="title">Title</label>

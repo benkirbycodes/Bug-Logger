@@ -2,9 +2,7 @@
   <div class="home container-fluid">
     <top />
     <div class="row">
-      <div class="col-12">
-        <add-bug />
-      </div>
+      <add-bug />
       <div class="col-12">{{ bugs }}</div>
     </div>
   </div>
@@ -20,6 +18,7 @@ export default {
   mounted() {
     this.$store.dispatch("getAllBugs");
   },
+
   components: {
     top,
     addBug
