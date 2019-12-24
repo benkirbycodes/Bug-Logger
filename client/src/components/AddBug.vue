@@ -1,9 +1,10 @@
 <template>
-  <div class="add-bug col-12">
+  <div class="add-bug pb-5 col-6 mx-auto">
     <form @submit.prevent="addBug">
       <div class="form-group">
         <label for="title">Title</label>
         <input
+          required
           placeholder="What's the name of this issue?"
           name="title"
           class="form-control"
@@ -12,6 +13,7 @@
         />
         <label for="reported-by">Reported By</label>
         <input
+          required
           placeholder="Who are you?"
           class="form-control"
           name="reported-by"
@@ -20,6 +22,7 @@
         />
         <label for="description">Description</label>
         <input
+          required
           placeholder="What's the issue?"
           name="description"
           class="form-control"

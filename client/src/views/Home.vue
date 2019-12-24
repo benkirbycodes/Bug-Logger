@@ -3,7 +3,8 @@
     <top />
     <div class="row">
       <add-bug />
-      <div class="col-12">{{ bugs }}</div>
+
+      <bugs />
     </div>
   </div>
 </template>
@@ -12,6 +13,7 @@
 // @ is an alias to /src
 import top from "@/components/Top";
 import addBug from "@/components/AddBug";
+import bugs from "@/components/Bugs";
 
 export default {
   name: "home",
@@ -21,7 +23,8 @@ export default {
 
   components: {
     top,
-    addBug
+    addBug,
+    bugs
   },
   computed: {
     bugs() {

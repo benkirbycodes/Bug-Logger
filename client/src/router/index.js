@@ -3,7 +3,7 @@ import VueRouter from "vue-router";
 // @ts-ignore
 import Home from "../views/Home.vue";
 // @ts-ignore
-import details from "../views/Details.vue";
+import Bug from "../views/Bug.vue";
 
 Vue.use(VueRouter);
 
@@ -15,8 +15,8 @@ const routes = [
   },
   {
     path: "/",
-    name: "details",
-    component: details
+    name: "bug",
+    component: Bug
   }
 ];
 
