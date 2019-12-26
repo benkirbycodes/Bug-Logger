@@ -35,6 +35,7 @@ export default {
       return this.$store.state.activeNotes;
     }
   },
+
   components: {
     top,
     notes,
