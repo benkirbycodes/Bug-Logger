@@ -38,7 +38,7 @@ export default new Vuex.Store({
       commit("addBug", res.data);
     },
     async setActiveBug({ commit, dispatch }, id) {
-      let res = await _api.get("bugs" + id);
+      let res = await _api.get("bugs/" + id);
       console.log(res.data);
       commit("setActiveBug", res.data);
     }
