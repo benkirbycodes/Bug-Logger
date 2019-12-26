@@ -7,7 +7,7 @@ const _repository = mongoose.model("Note", Note);
 class NotesService {
   //NOTE Below, make sure BugId is actually BugId
   async getNotesByBugId(BugId) {
-    let data = await _repository.find({ BugId });
+    let data = await _repository.find({ bug: BugId });
     if (!data) {
       throw new ApiError("Invalid ID", 400);
     }

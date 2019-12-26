@@ -28,9 +28,12 @@ export default new Vuex.Store({
       state.activeBug = bug;
     },
     addNote(state, note) {
+      console.log(note);
       state.notes.push(note);
+      console.log(state.notes);
     },
     setActiveNotes(state, data) {
+      console.log(data);
       state.activeNotes = data;
     }
   },
@@ -43,6 +46,7 @@ export default new Vuex.Store({
     async getNotesByBugId({ commit, dispatch }, id) {
       let res = await _api.get("bugs/" + id + "/notes");
       console.log(res.data);
+      console.log(this.state.notes);
       commit("setActiveNotes", res.data);
     },
     async addBug({ commit, dispatch }, bug) {

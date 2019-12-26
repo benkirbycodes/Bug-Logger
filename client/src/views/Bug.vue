@@ -11,6 +11,7 @@
       <div class="col-12" v-for="note in notes" :key="note.id">
         <notes :noteData="note" />
       </div>
+      <add-note />
     </div>
   </div>
 </template>
