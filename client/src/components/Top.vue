@@ -1,7 +1,9 @@
 <template>
   <div class="top bg-info p-3 row">
     <div class="col-6">
-      <h1>Bug Tracker</h1>
+      <router-link to="/">
+        <h1>Bug Tracker</h1>
+      </router-link>
     </div>
     <div class="col-6">
       <button class="v" @click="openAddBugForm">Report A Bug</button>

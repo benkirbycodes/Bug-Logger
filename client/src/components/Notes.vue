@@ -12,9 +12,12 @@ export default {
   props: ["noteData"],
   methods: {
     deleteNote() {
-      console.log(this.noteData.id);
-      console.log(this.noteData.bug);
-      this.$store.dispatch("deleteNote", [this.noteData.id, this.noteData.bug]);
+      if (confirm("Are You Sure You Want To Delete This Note?")) {
+        this.$store.dispatch("deleteNote", [
+          this.noteData.id,
+          this.noteData.bug
+        ]);
+      }
     }
   },
   computed: {

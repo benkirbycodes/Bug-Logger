@@ -52,6 +52,11 @@ export default {
     addBug() {
       let bug = { ...this.newBug };
       this.$store.dispatch("addBug", bug);
+      console.log(this.$store.state.activeBug.id);
+      this.$router.push({
+        name: "bug",
+        params: { id: this.$store.state.activeBug.id }
+      });
       this.newBug = {
         closed: false,
         description: "",

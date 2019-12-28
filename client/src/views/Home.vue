@@ -13,6 +13,7 @@
               <th>Title</th>
               <th>Completed</th>
               <th>Reported By</th>
+              <th>Last Modified</th>
             </tr>
           </thead>
           <tbody v-for="bug in bugs" :key="bug.id">
