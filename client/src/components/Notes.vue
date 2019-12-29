@@ -1,10 +1,20 @@
 <template>
-  <div class="note">
-    <p>Note: {{noteData.content}}</p>
-    <p>By: {{noteData.reportedBy}}</p>
-    <button class="btn btn-outline-dark btn-sm" @click.prevent="deleteNote">x</button>
-  </div>
+  <tr class="note">
+    <td>{{noteData.reportedBy}}</td>
+    <td>{{noteData.content}}</td>
+    <td>
+      <i class="fa fa-times-circle" @click.prevent="deleteNote"></i>
+    </td>
+  </tr>
 </template>
+
+
+
+
+
+
+
+
 
 <script>
 export default {

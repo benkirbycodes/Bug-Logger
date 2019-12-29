@@ -3,7 +3,7 @@
     <router-link :to="{ name: 'bug', params: { id: bugData.id } }">
       <td>{{ bugData.title }}</td>
     </router-link>
-    <td>{{ status }}</td>
+    <td v-bind:class="getClass()">{{ status }}</td>
     <td>{{ bugData.reportedBy }}</td>
     <td>{{ lastModified }}</td>
   </tr>
@@ -13,7 +13,14 @@
 export default {
   name: "bugs",
   props: ["bugData"],
-  methods: {},
+  methods: {
+    getClass() {
+      return {
+        red: this.bugData.closed,
+        green: !this.bugData.closed
+      };
+    }
+  },
   computed: {
     bugs() {
       return this.$store.state.bugs;
@@ -31,4 +38,12 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
+</style>

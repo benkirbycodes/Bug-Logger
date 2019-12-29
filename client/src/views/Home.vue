@@ -7,8 +7,9 @@
       </div>
 
       <div class="col-12">
-        <table class="table">
-          <thead>
+        <h3>Current Bugs:</h3>
+        <table class="table table-hover">
+          <thead class="thead-dark">
             <tr>
               <th>Title</th>
               <th>Completed</th>

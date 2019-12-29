@@ -19,7 +19,7 @@
           v-model="newNote.content"
         />
       </div>
-      <button class="btn btn-outline-dark btn-lg">Submit Note</button>
+      <button class="btn btn-outline-dark btn-sm">Submit Note</button>
     </form>
   </div>
 </template>

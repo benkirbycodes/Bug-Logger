@@ -2,17 +2,35 @@
   <div class="bug container-fluid">
     <top />
     <div class="row">
-      <div class="col-12">
-        <h1>Title: {{bug.title}}</h1>
-        <h2>Reported By: {{bug.reportedBy}}</h2>
-        <h3>Status: {{status}}</h3>
-        <p>{{bug.description}}</p>
+      <div class="col-8 p-2 mx-auto text-left">
+        <h5>Title:</h5>
+        <h1>{{bug.title}}</h1>
+        <h5>Reported By:</h5>
+        <h2>{{bug.reportedBy}}</h2>
+        <h5>Status:</h5>
+        <h3 v-bind:class="getClass()">{{status}}</h3>
+        <h5>Last Modified:</h5>
+        <h3>{{lastModified}}</h3>
+        <p class="rounded border p-3">{{bug.description}}</p>
+        <edit-bug v-if="edit" :editData="edit" />
+        <button class="btn btn-outline-dark btn-sm" @click.prevent="showEditBug">Edit Bug</button>
         <button class="btn btn-outline-dark btn-sm" @click.prevent="closeBug">Close Bug</button>
       </div>
-      <div class="col-12" v-for="note in notes" :key="note.id">
-        <notes :noteData="note" />
+      <div class="col-12">
+        <table class="table">
+          <thead class="thead-light">
+            <tr>
+              <th>Name</th>
+              <th>Note</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody class="col-12" v-for="note in notes" :key="note.id">
+            <notes :noteData="note" />
+          </tbody>
+        </table>
+        <add-note />
       </div>
-      <add-note />
     </div>
   </div>
 </template>
@@ -21,9 +39,15 @@
 import top from "@/components/Top";
 import notes from "@/components/Notes";
 import addNote from "@/components/AddNote";
+import editBug from "@/components/EditBug";
 
 export default {
   name: "bug",
+  data() {
+    return {
+      edit: false
+    };
+  },
   mounted() {
     this.$store.dispatch("setActiveBug", this.$route.params.id);
     this.$store.dispatch("getNotesByBugId", this.$route.params.id);
@@ -33,6 +57,15 @@ export default {
       if (confirm("Are You Sure You Want To Close This Bug?")) {
         this.$store.dispatch("closeBug", this.$route.params.id);
       }
+    },
+    showEditBug() {
+      return (this.edit = true);
+    },
+    getClass() {
+      return {
+        red: this.bug.closed,
+        green: !this.bug.closed
+      };
     }
   },
   computed: {
@@ -46,15 +79,28 @@ export default {
       if (this.bug.closed) {
         return "Closed";
       } else return "Open";
+    },
+    lastModified() {
+      let lastMod = new Date(this.bug.updatedAt);
+      return lastMod.toLocaleDateString();
     }
   },
 
   components: {
     top,
     notes,
-    addNote
+    addNote,
+    editBug
   }
 };
 </script>
 
-<style></style>
+<style>
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
+</style>
