@@ -31,6 +31,7 @@
         />
       </div>
       <button class="btn btn-outline-dark btn-lg">Submit Bug</button>
+      <button type="button" @click="hideAdd" class="btn btn-outline-dark btn-lg">Cancel</button>
     </form>
   </div>
 </template>
@@ -63,6 +64,9 @@ export default {
         title: "",
         reportedBy: ""
       };
+    },
+    hideAdd() {
+      this.$emit("clicked");
     }
   }
 };

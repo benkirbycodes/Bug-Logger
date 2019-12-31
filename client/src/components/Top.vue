@@ -12,18 +12,18 @@
       </router-link>
     </div>
     <div class="col-4">
-      <button class="btn btn-outline-light btn-lg" @click="openAddBugForm">Report A Bug</button>
+      <button class="btn btn-outline-light btn-lg" @click="showAdd">Report A Bug</button>
     </div>
   </div>
 </template>
 
 <script>
-//TODO Using a static addBug form for now, come back to this when hooking up modals.
 export default {
   name: "top",
-
   methods: {
-    openAddBugForm() {}
+    showAdd() {
+      this.$emit("clicked");
+    }
   }
 };
 </script>

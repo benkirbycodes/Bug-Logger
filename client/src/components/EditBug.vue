@@ -45,6 +45,9 @@ export default {
         title: "",
         description: ""
       };
+    },
+    closeEdit() {
+      this.$emit("clicked", false);
     }
   }
 };

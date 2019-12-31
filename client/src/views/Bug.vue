@@ -12,7 +12,7 @@
         <h5>Last Modified:</h5>
         <h3>{{lastModified}}</h3>
         <p class="rounded border p-3">{{bug.description}}</p>
-        <edit-bug v-if="edit" :editData="edit" />
+        <edit-bug v-if="edit" :editData="edit" @clicked="hideEditBug" />
         <button class="btn btn-outline-dark btn-sm" @click.prevent="showEditBug">Edit Bug</button>
         <button class="btn btn-outline-dark btn-sm" @click.prevent="closeBug">Close Bug</button>
       </div>
@@ -60,6 +60,9 @@ export default {
     },
     showEditBug() {
       return (this.edit = true);
+    },
+    hideEditBug() {
+      return (this.edit = false);
     },
     getClass() {
       return {

@@ -4,7 +4,6 @@ import axios from "axios";
 
 Vue.use(Vuex);
 
-//NOTE Check that this API is correct
 const _api = axios.create({
   baseURL: "//localhost:3000/api",
   timeout: 5000
@@ -53,7 +52,9 @@ export default new Vuex.Store({
       let res = await _api.post("bugs", bug);
       console.log(res.data);
       dispatch("setActiveBug", res.data.id);
+      console.log(res.data.id);
       commit("addBug", res.data);
+      return res;
     },
     async setActiveBug({ commit, dispatch }, id) {
       let res = await _api.get("bugs/" + id);
@@ -68,8 +69,8 @@ export default new Vuex.Store({
     async editBug({ commit, dispatch }, bugArray) {
       console.log(bugArray);
       let res = await _api.put("bugs/" + bugArray[1], bugArray[0]);
-      console.log(res);
-      dispatch("setActiveBug", bugArray[1]);
+      console.log(res.data);
+      //dispatch("setActiveBug", bugArray[1]);
       dispatch("getAllBugs");
     },
     async deleteNote({ commit, dispatch }, idArray) {
