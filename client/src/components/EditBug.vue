@@ -28,7 +28,6 @@ export default {
     editBug() {
       let bug = { ...this.editedBug };
       this.$store.dispatch("editBug", [bug, this.$route.params.id]);
-      console.log([bug, this.$route.params.id]);
       this.editedBug = {
         title: "",
         description: ""
@@ -41,7 +40,6 @@ export default {
   },
   computed: {
     activeBug() {
-      console.log(this.$store.state.activeBug);
       return this.$store.state.activeBug;
     }
   }

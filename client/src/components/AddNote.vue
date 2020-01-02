@@ -42,7 +42,6 @@ export default {
   methods: {
     addNote() {
       let note = { ...this.newNote };
-      console.log(note);
       this.$store.dispatch("addNote", note);
       this.newNote = {
         reportedBy: "",

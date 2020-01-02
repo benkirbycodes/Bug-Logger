@@ -69,7 +69,6 @@ export default {
   },
   computed: {
     bugs() {
-      console.log(this.$store.state.bugs);
       return this.$store.state.bugs.filter(
         bug => this.showClosed || !bug.closed
       );

@@ -18,7 +18,11 @@
           v-if="!closed"
           @click.prevent="showEditBug"
         >Edit Bug</button>
-        <button class="btn btn-outline-dark btn-sm" @click.prevent="closeBug">Close Bug</button>
+        <button
+          class="btn btn-outline-dark btn-sm"
+          v-if="!closed"
+          @click.prevent="closeBug"
+        >Close Bug</button>
       </div>
       <div class="col-12">
         <table class="table">

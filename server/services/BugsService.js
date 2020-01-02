@@ -6,7 +6,6 @@ const _repository = mongoose.model("Bug", Bug);
 
 class BugsService {
   async getAll() {
-    console.log("From Get All");
     return await _repository.find({});
   }
   async getById(id) {
@@ -21,8 +20,6 @@ class BugsService {
   }
 
   async editBug(id, update) {
-    console.log(update);
-    console.log(id);
     let data = await _repository.findOneAndUpdate(
       { _id: id, closed: false },
       update,
@@ -30,7 +27,6 @@ class BugsService {
         new: true
       }
     );
-    console.log(data);
 
     if (!data) {
       throw new ApiError("Cannot Edit A Closed Bug", 400);
