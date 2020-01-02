@@ -13,7 +13,11 @@
         <h3>{{lastModified}}</h3>
         <p class="rounded border p-3">{{bug.description}}</p>
         <edit-bug v-if="edit" :editData="edit" @clicked="hideEditBug" />
-        <button class="btn btn-outline-dark btn-sm" @click.prevent="showEditBug">Edit Bug</button>
+        <button
+          class="btn btn-outline-dark btn-sm"
+          v-if="!closed"
+          @click.prevent="showEditBug"
+        >Edit Bug</button>
         <button class="btn btn-outline-dark btn-sm" @click.prevent="closeBug">Close Bug</button>
       </div>
       <div class="col-12">
@@ -29,7 +33,12 @@
             <notes :noteData="note" />
           </tbody>
         </table>
-        <add-note />
+        <add-note v-if="addNote" @clicked="hideAddNote" />
+        <button
+          class="btn btn-outline-dark btn-sm"
+          v-if="!addNote"
+          @click.prevent="showAddNote"
+        >Add Note</button>
       </div>
     </div>
   </div>
@@ -45,7 +54,8 @@ export default {
   name: "bug",
   data() {
     return {
-      edit: false
+      edit: false,
+      addNote: false
     };
   },
   mounted() {
@@ -63,6 +73,12 @@ export default {
     },
     hideEditBug() {
       return (this.edit = false);
+    },
+    showAddNote() {
+      return (this.addNote = true);
+    },
+    hideAddNote() {
+      return (this.addNote = false);
     },
     getClass() {
       return {
@@ -86,6 +102,9 @@ export default {
     lastModified() {
       let lastMod = new Date(this.bug.updatedAt);
       return lastMod.toLocaleDateString();
+    },
+    closed() {
+      return this.$store.state.activeBug.closed;
     }
   },
 

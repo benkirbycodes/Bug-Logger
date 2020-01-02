@@ -59,8 +59,7 @@ export default {
     },
     hideAddForm() {
       return (this.showAdd = false);
-    },
-    toggleShowHide() {}
+    }
   },
   components: {
     top,

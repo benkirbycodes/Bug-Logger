@@ -3,21 +3,9 @@
     <form @submit.prevent="editBug">
       <div class="form-group">
         <label for="title">Title</label>
-        <input
-          type="text"
-          class="form-control"
-          name="title"
-          value="editData.title"
-          v-model="editedBug.title"
-        />
+        <input type="text" class="form-control" name="title" v-model="editedBug.title" />
         <label for="description">Description</label>
-        <input
-          type="text"
-          class="form-control"
-          name="description"
-          value="editData.description"
-          v-model="editedBug.description"
-        />
+        <input type="text" class="form-control" name="description" v-model="editedBug.description" />
       </div>
       <button class="btn btn-outline-dark btn-sm">Submit Edit</button>
     </form>
@@ -33,7 +21,8 @@ export default {
       editedBug: {
         title: "",
         description: ""
-      }
+      },
+      activeBug: this.$store.state.activeBug
     };
   },
   methods: {
@@ -45,9 +34,10 @@ export default {
         title: "",
         description: ""
       };
+      this.closeEdit();
     },
     closeEdit() {
-      this.$emit("clicked", false);
+      this.$emit("clicked");
     }
   }
 };

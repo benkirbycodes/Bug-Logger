@@ -1,19 +1,22 @@
 <template>
-  <div class="add-note col-12">
+  <div class="add-note col-6 mx-auto">
     <form @submit.prevent="addNote">
+      <h4>Add A New Note</h4>
       <div class="form-group">
-        <label for="name">Name</label>
+        <label for="name">Name:</label>
         <input
           type="text"
           name="name"
           required
+          class="form-control"
           placeholder="Enter your name..."
           v-model="newNote.reportedBy"
         />
-        <label for="comment">Comment</label>
+        <label for="comment">Comment:</label>
         <input
           type="text"
           name="comment"
+          class="form-control"
           required
           placeholder="Enter your comment..."
           v-model="newNote.content"
@@ -46,6 +49,10 @@ export default {
         content: "",
         bug: this.$route.params.id
       };
+      this.hideAddNote();
+    },
+    hideAddNote() {
+      this.$emit("clicked");
     }
   }
 };

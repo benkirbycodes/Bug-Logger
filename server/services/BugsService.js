@@ -31,11 +31,11 @@ class BugsService {
       }
     );
     console.log(data);
-    return data;
-    //TODO Figure out how to send error for unsuccessful edit
+
     if (!data) {
-      throw new ApiError("Invalid ID", 400);
+      throw new ApiError("Cannot Edit A Closed Bug", 400);
     }
+    return data;
   }
   async closeBug(id) {
     let data = await _repository.findByIdAndUpdate(id, { closed: true });

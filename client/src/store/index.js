@@ -71,7 +71,7 @@ export default new Vuex.Store({
       console.log(bugArray);
       let res = await _api.put("bugs/" + bugArray[1], bugArray[0]);
       console.log(res.data);
-      //dispatch("setActiveBug", bugArray[1]);
+      commit("setActiveBug", res.data);
       dispatch("getAllBugs");
     },
     async deleteNote({ commit, dispatch }, idArray) {
