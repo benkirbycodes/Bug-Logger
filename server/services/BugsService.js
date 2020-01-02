@@ -6,6 +6,7 @@ const _repository = mongoose.model("Bug", Bug);
 
 class BugsService {
   async getAll() {
+    console.log("From Get All");
     return await _repository.find({});
   }
   async getById(id) {
@@ -20,11 +21,16 @@ class BugsService {
   }
 
   async editBug(id, update) {
+    console.log(update);
+    console.log(id);
     let data = await _repository.findOneAndUpdate(
-      { id: id, closed: false },
+      { _id: id, closed: false },
       update,
-      { new: true }
+      {
+        new: true
+      }
     );
+    console.log(data);
     return data;
     //TODO Figure out how to send error for unsuccessful edit
     if (!data) {

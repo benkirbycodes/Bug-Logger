@@ -52,12 +52,7 @@ export default {
   methods: {
     addBug() {
       let bug = { ...this.newBug };
-      this.$store.dispatch("addBug", bug);
-      console.log(this.$store.state.activeBug.id);
-      this.$router.push({
-        name: "bug",
-        params: { id: this.$store.state.activeBug.id }
-      });
+      this.$store.dispatch("addBug", bug).then(this.changeRoute);
       this.newBug = {
         closed: false,
         description: "",
@@ -67,6 +62,17 @@ export default {
     },
     hideAdd() {
       this.$emit("clicked");
+    },
+    changeRoute() {
+      this.$router.push({
+        name: "bug",
+        params: { id: this.$store.state.activeBug.id }
+      });
+    }
+  },
+  computed: {
+    activeBug() {
+      return this.$store.state.activeBug;
     }
   }
 };

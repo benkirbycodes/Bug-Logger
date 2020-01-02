@@ -2,41 +2,7 @@
   <div class="home container-fluid">
     <top @clicked="showAddForm" />
     <add-bug v-if="showAdd" @clicked="hideAddForm" />
-    <!-- <modal id="add-bug">
-      <div slot="modal-headline">Report A Bug</div>
-      <form @submit.prevent="addBug" slot="input">
-        <div class="form-group">
-          <label for="title">Title</label>
-          <input
-            required
-            placeholder="What's the name of this issue?"
-            name="title"
-            class="form-control"
-            type="text"
-            v-model="newBug.title"
-          />
-          <label for="reported-by">Reported By</label>
-          <input
-            required
-            placeholder="Who are you?"
-            class="form-control"
-            name="reported-by"
-            type="text"
-            v-model="newBug.reportedBy"
-          />
-          <label for="description">Description</label>
-          <input
-            required
-            placeholder="What's the issue?"
-            name="description"
-            class="form-control"
-            type="text"
-            v-model="newBug.description"
-          />
-        </div>
-        <button class="btn btn-outline-dark btn-lg">Submit Bug</button>
-      </form>
-    </modal>-->
+
     <div class="row">
       <div class="col-6 pb-5 mx-auto"></div>
 
@@ -53,12 +19,11 @@
               <th>Last Modified</th>
             </tr>
           </thead>
-          <tbody v-show="showClosed" v-for="bug in bugs" :key="bug.id">
+          <tbody v-for="bug in bugs" :key="bug.id">
             <bugs :bugData="bug" />
           </tbody>
         </table>
       </div>
-      <bugs />
     </div>
   </div>
 </template>
@@ -89,25 +54,6 @@ export default {
   },
 
   methods: {
-    addBug() {
-      let bug = { ...this.newBug };
-      console.log(this.$store.state.activeBug.id);
-      this.$store.dispatch("addBug", bug); //.then(this.changeRoute);
-      console.log(this.$store.state.activeBug.id);
-      this.newBug = {
-        closed: false,
-        description: "",
-        title: "",
-        reportedBy: ""
-      };
-      this.changeRoute();
-    },
-    changeRoute() {
-      this.$router.push({
-        name: "bug",
-        params: { id: this.$store.state.activeBug.id }
-      });
-    },
     showAddForm() {
       return (this.showAdd = true);
     },
@@ -125,7 +71,9 @@ export default {
   computed: {
     bugs() {
       console.log(this.$store.state.bugs);
-      return this.$store.state.bugs;
+      return this.$store.state.bugs.filter(
+        bug => this.showClosed || !bug.closed
+      );
     }
   }
 };
