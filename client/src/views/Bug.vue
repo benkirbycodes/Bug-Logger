@@ -1,6 +1,6 @@
 <template>
   <div class="bug container-fluid">
-    <top />
+    <bug-top />
     <div class="row">
       <div class="col-8 p-2 mx-auto text-left">
         <h5>Title:</h5>
@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import top from "@/components/Top";
+import bugTop from "@/components/BugTop";
 import notes from "@/components/Notes";
 import addNote from "@/components/AddNote";
 import editBug from "@/components/EditBug";
@@ -109,7 +109,7 @@ export default {
   },
 
   components: {
-    top,
+    bugTop,
     notes,
     addNote,
     editBug

@@ -21,8 +21,7 @@ export default {
       editedBug: {
         title: "",
         description: ""
-      },
-      activeBug: this.$store.state.activeBug
+      }
     };
   },
   methods: {
@@ -38,6 +37,12 @@ export default {
     },
     closeEdit() {
       this.$emit("clicked");
+    }
+  },
+  computed: {
+    activeBug() {
+      console.log(this.$store.state.activeBug);
+      return this.$store.state.activeBug;
     }
   }
 };

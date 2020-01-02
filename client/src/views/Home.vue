@@ -14,7 +14,7 @@
           <thead class="thead-dark">
             <tr>
               <th>Title</th>
-              <th>Completed</th>
+              <th>Status</th>
               <th>Reported By</th>
               <th>Last Modified</th>
             </tr>
