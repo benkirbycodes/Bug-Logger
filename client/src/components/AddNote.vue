@@ -23,6 +23,7 @@
         />
       </div>
       <button class="btn btn-outline-dark btn-sm">Submit Note</button>
+      <button type="button" @click="hideAddNote" class="btn btn-outline-dark btn-sm">Cancel</button>
     </form>
   </div>
 </template>
